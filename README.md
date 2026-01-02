@@ -7,18 +7,14 @@
 
 ## 📖 Introduction
 
-With the "Data Wall" approaching for public web data, **Synthetic Data** has become the critical engine for scaling Large Language Models (LLMs) and Agents.
+With the "Data Wall" approaching for public web data, **Synthetic Data** has become the critical engine for scaling Large Language Models (LLMs).
 
-This repository serves as a comprehensive knowledge base for **Synthetic Data Methodologies**. We distinguish ourselves by covering the **entire model training lifecycle**—not just simple instruction tuning.
-
-From synthesizing foundational **Pre-training** corpora (like "textbooks"), to constructing complex **Reasoning & Agentic** trajectories for SFT, and finally generating verifiable ground-truth data to fuel downstream **RLVR** (Reinforcement Learning with Verifiable Rewards) tasks.
-
-We focus strictly on the **Schemes and Methods** of synthesis: How to generate, verify, and evaluate data efficiently.
+This repository organizes synthetic data methodologies by **Training Stages**—covering the full lifecycle from Pre-training to SFT and RL. Within each stage, we dive deep into specific **Domains** (Math, Code, Agent), focusing on the unique synthesis schemes (Efficiency, Verification, Simulation) required for each.
 
 **Scope & Highlights:**
-- ✅ **Full-Spectrum Coverage:** Methodologies spanning **Pre-training** (Knowledge Distillation), **SFT** (Instruction Evolution), and data generation for **RL** (RLHF/RLVR).
-- ✅ **Synthesis Schemes:** A deep dive into diverse mechanisms: *Self-Evolution*, *Agentic Simulation*, *Model-Based Rephrasing*, and *Execution Feedback Loop*.
-- ✅ **Quality & Efficiency:** Techniques for **Verification** (Rule/Environment feedback), **Filtering**, and maximizing data efficiency (Scaling Laws) under compute constraints.
+- ✅ **Stage 1: Pre-training:** Synthesizing "Textbooks" and knowledge-dense corpora.
+- ✅ **Stage 2: SFT (Instruction Tuning):** Generating complex instructions for **Math**, **Code**, and **Agents** via Evolution and Simulation.
+- ✅ **Stage 3: RL (Alignment):** Fueling **RLVR** (Verifiable Rewards) and Preference Optimization with synthetic ground truths.
 
 ---
 
@@ -26,90 +22,70 @@ We focus strictly on the **Schemes and Methods** of synthesis: How to generate, 
 
 - [Awesome Synthetic Data](#awesome-synthetic-data)
   - [📖 Introduction](#-introduction)
-  - [01. Pretraining Scaling (Universal Corpus)](#01-pretraining-scaling-universal-corpus)
-  - [02. Reasoning & Math (Logic & CoT)](#02-reasoning--math-logic--cot)
-  - [03. Code Engineering (Generation & Execution)](#03-code-engineering-generation--execution)
-  - [04. Agentic Interaction (Trajectory & Env)](#04-agentic-interaction-trajectory--env)
-  - [05. General SFT (Instruction Tuning)](#05-general-sft-instruction-tuning)
-  - [06. RLVR & Verifiable Reinforcement](#06-rlvr--verifiable-reinforcement) <span style="color:red">**(New & Hot)**</span>
-  - [07. Preference Alignment (RLHF & RLAIF)](#07-preference-alignment-rlhf--rlaif)
-  - [📊 Evaluation & Benchmarks](#-evaluation--benchmarks)
-  - [🛠️ Tools & Frameworks](#️-tools--frameworks)
-  - [📝 Tutorials & Insights](#-tutorials--insights)
-  - [🤝 Contributing](#-contributing)
+  - [Phase 1: Pre-training (The Foundation)](#phase-1-pre-training-the-foundation)
+    - [01. General & Domain Textbooks](#01-general--domain-textbooks)
+  - [Phase 2: SFT (Supervised Fine-Tuning)](#phase-2-sft-supervised-fine-tuning)
+    - [02. General Instruction Tuning](#02-general-instruction-tuning)
+    - [03. Math & Reasoning SFT](#03-math--reasoning-sft)
+    - [04. Code Generation SFT](#04-code-generation-sft)
+    - [05. Agentic & Tool-Use SFT](#05-agentic--tool-use-sft)
+  - [Phase 3: RL & Alignment (The Refinement)](#phase-3-rl--alignment-the-refinement)
+    - [06. RLVR (Verifiable Rewards for Math/Code)](#06-rlvr-verifiable-rewards-for-mathcode)
+    - [07. General Preference Alignment (RLHF)](#07-general-preference-alignment-rlhf)
+  - [Extras](#extras)
+    - [📊 Evaluation & Benchmarks](#-evaluation--benchmarks)
+    - [📝 Tutorials & Insights](#-tutorials--insights)
   - [Citation](#citation)
 
 ---
 
-## 01. Pretraining Scaling (Universal Corpus)
-*Focus: Methodologies for synthesizing "Textbook Quality" data, rephrasing web noise, and knowledge distillation for base model pre-training.*
+## Phase 1: Pre-training (The Foundation)
+*Synthesizing massive, knowledge-dense corpora to replace or augment Common Crawl.*
 
-- [**Model-Based Synthesis**](./01_Pretraining/README.md#model-based)
-  > Generating new knowledge or textbooks from scratch (e.g., *Cosmopedia*, *Phi-1.5*).
-- [**Rephrasing & Augmentation**](./01_Pretraining/README.md#rephrasing)
-  > Rewriting low-quality web data into high-quality formats (e.g., *FineWeb-Edu*, *RefinedWeb*).
-- [**Synthetic-Real Mixing Strategies**](./01_Pretraining/README.md#mixing-strategies)
-  > Research on the optimal ratio of synthetic vs. real data and scaling laws.
+### [01. General & Domain Textbooks](./01_Pretraining/README.md)
+* **Textbook Synthesis:** Using strong models to write structured, educational content (e.g., *Cosmopedia*).
+* **Web Rephrasing:** "Translating" noisy web text into clean, high-value formats (e.g., *FineWeb*).
+* **Code/Math Stack Synthesis:** Generating synthetic GitHub repos or math proofs for base model reasoning.
 
-## 02. Reasoning & Math (Logic & CoT)
-*Focus: Synthesizing step-by-step reasoning (CoT), formal proofs, and logic puzzles using verification mechanisms.*
+---
 
-- [**Prompt-Driven CoT**](./02_Reasoning_Math/README.md#prompt-driven)
-  > Using strong models to generate reasoning chains via specialized prompting (e.g., *WizardMath*).
-- [**Verification-Based (Process Reward)**](./02_Reasoning_Math/README.md#verification-based)
-  > Filtering data via Python scripts, solvers, or Reward Models (e.g., *Math-Shepherd*, *Let's Verify Step by Step*).
-- [**Backward Synthesis**](./02_Reasoning_Math/README.md#backward-synthesis)
-  > Generating questions based on known answers to ensure solvability and control difficulty.
+## Phase 2: SFT (Supervised Fine-Tuning)
+*The core synthesis stage: Turning base models into capable instruction followers across domains.*
 
-## 03. Code Engineering (Generation & Execution)
-*Focus: Leveraging compilers, interpreters, and unit tests to synthesize zero-hallucination code data.*
+### [02. General Instruction Tuning](./02_SFT_General/README.md)
+* **Seed Evolution:** Methodologies to evolve simple prompts into complex tasks (e.g., *WizardLM*).
+* **Self-Instruct:** The classic pipeline of generation and filtering.
+* **Diversity Promotion:** Ensuring semantic coverage of verbs and topics.
 
-- [**Self-Instruct (Static)**](./03_Code_Engineering/README.md#self-instruct)
-  > Standard instruction generation for coding tasks (e.g., *CodeAlpaca*).
-- [**Execution-Feedback Loop**](./03_Code_Engineering/README.md#execution-feedback)
-  > Iterative synthesis where execution errors (stderr) drive self-correction (e.g., *Exec-Instruct*).
-- [**Unit Test & Debugging Synthesis**](./03_Code_Engineering/README.md#unit-test-synthesis)
-  > Synthesizing test cases first to verify generated code (e.g., *CodeT*).
+### [03. Math & Reasoning SFT](./03_SFT_Math/README.md)
+* **Chain-of-Thought (CoT) Synthesis:** Generating step-by-step reasoning paths.
+* **Backward Synthesis:** Generating questions from answers to ensure solvability.
+* **Process Verification:** Using solvers to filter synthetic SFT data (e.g., *Math-Shepherd*).
 
-## 04. Agentic Interaction (Trajectory & Env)
-*Focus: Synthesizing trajectories for tool use, planning, and environment interaction (Web/OS).*
+### [04. Code Generation SFT](./04_SFT_Code/README.md)
+* **Execution-Feedback Loops:** Generating code -> Executing -> Self-Correction -> Final SFT Data.
+* **OSS-Instruct:** Mining and synthesizing instructions from open-source codebases.
+* **Unit-Test Synthesis:** Generating pairs of (Problem, Solution, Test Cases).
 
-- [**Environment-Based Simulation**](./04_Agentic_Interaction/README.md#environment-simulation)
-  > Recording successful trajectories in real sandboxes like OS or Web (e.g., *AgentTrek*, *WebArena*).
-- [**Model-Simulated Interaction**](./04_Agentic_Interaction/README.md#model-simulated)
-  > Using models to simulate user-agent dialogues and tool outputs (e.g., *ToolAlpaca*).
-- [**Multi-Agent Roleplay**](./04_Agentic_Interaction/README.md#multi-agent)
-  > Synthesizing social or collaborative data via multi-agent debate (e.g., *CAMEL*, *ChatDev*).
+### [05. Agentic & Tool-Use SFT](./05_SFT_Agent/README.md)
+* **Environment Simulation:** Collecting trajectories from Agents interacting with Sandbox/OS (e.g., *AgentTrek*).
+* **Trajectory Filtering:** Only keeping "Success" traces from exploration.
+* **Multi-Agent Roleplay:** Synthesizing social interactions via multi-agent debate.
 
-## 05. General SFT (Instruction Tuning)
-*Focus: Enhancing diversity, complexity, and instruction-following capabilities for general chat.*
+---
 
-- [**Seed Evolution (Depth/Breadth)**](./05_General_SFT/README.md#seed-evolution)
-  > Evolving simple instructions into complex tasks (e.g., *WizardLM*).
-- [**Cloning & Distillation**](./05_General_SFT/README.md#cloning)
-  > Recovering skills from proprietary models (e.g., *Alpaca*, *Vicuna*).
-- [**Diversity-Driven Synthesis**](./05_General_SFT/README.md#diversity-driven)
-  > Ensuring coverage of rare tasks and verbs.
+## Phase 3: RL & Alignment (The Refinement)
+*Synthesizing signals (Rewards/Pairs) to further push model boundaries.*
 
-## 06. RLVR & Verifiable Reinforcement
-*Focus: "System 2" RL using Ground Truth or Rule-Based Verifiers (The DeepSeek-R1 / o1 paradigm).*
+### [06. RLVR (Verifiable Rewards for Math/Code)](./06_RL_Verifiable/README.md) <span style="color:red">**(System 2 Focus)**</span>
+* **Outcome-Based Synthesis:** Generating problems with deterministic binary rewards for PPO/GRPO.
+* **Process Supervision (PRM):** Synthesizing step-level correctness labels.
+* **Self-Correction Trajectories:** Generating data specifically to train "Try-Fail-Fix" behaviors.
 
-- [**Outcome-based Reinforcement**](./06_RLVR_Verifiable/README.md#outcome-based)
-  > Utilizing compilers (Code) or answers (Math) as binary reward signals (e.g., *DeepSeek-R1* methods).
-- [**Process Supervision (PRM)**](./06_RLVR_Verifiable/README.md#process-supervision)
-  > Synthesizing step-by-step reward signals to guide reasoning search.
-- [**Self-Correction Loops**](./06_RLVR_Verifiable/README.md#self-correction)
-  > Training models to critique and refine their own outputs based on verification failures.
-
-## 07. Preference Alignment (RLHF & RLAIF)
-*Focus: "System 1" RL using Fuzzy Human/Model Preferences (Chosen vs. Rejected).*
-
-- [**AI Feedback (RLAIF)**](./07_Preference_Alignment/README.md#ai-feedback)
-  > Using models as judges to label preferences (e.g., *UltraFeedback*, *Starling*).
-- [**Critique & Revision**](./07_Preference_Alignment/README.md#critique-revise)
-  > Synthesizing natural language feedback for training self-refinement (e.g., *Constitutional AI*).
-- [**Pairwise Data Synthesis**](./07_Preference_Alignment/README.md#pairwise-synthesis)
-  > Generating high-quality DPO/PPO pairs from single responses.
+### [07. General Preference Alignment (RLHF)](./07_RL_General/README.md) <span style="color:red">**(System 1 Focus)**</span>
+* **AI Feedback (RLAIF):** Synthesizing preferences (Chosen vs. Rejected) using Model-as-a-Judge.
+* **Critique & Revision:** Synthesizing natural language feedback loops (e.g., *Constitutional AI*).
+* **Pairwise Data Generation:** Creating synthetic DPO datasets from single responses.
 
 ---
 
