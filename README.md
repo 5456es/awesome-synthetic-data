@@ -7,14 +7,18 @@
 
 ## 📖 Introduction
 
-With the "Data Wall" approaching for public web data, **Synthetic Data** has become the critical frontier for scaling Large Language Models (LLMs) and Agents.
+With the "Data Wall" approaching for public web data, **Synthetic Data** has become the critical engine for scaling Large Language Models (LLMs) and Agents.
 
-This repository tracks the evolution of synthetic data from simple instruction following (SFT) to complex **Reasoning**, **Code Execution**, and **Agentic Interaction**. We focus particularly on methods that leverage **Efficiency** (Small Models + Compute), **Verification** (Rule/Environment feedback), and **Reinforcement Learning** (RL) to break the limits of human-labeled data.
+This repository serves as a comprehensive knowledge base for **Synthetic Data Methodologies**. We distinguish ourselves by covering the **entire model training lifecycle**—not just simple instruction tuning.
 
-**Scope:**
-- ✅ **Generation Pipelines:** How to synthesize data (Self-Instruct, Evolution, Simulation).
-- ✅ **Verification & Filtering:** How to ensure quality (Execution, Reward Models).
-- ✅ **RLVR & Feedback:** Leveraging ground-truth signals (Math/Code) vs. preference signals (Chat).
+From synthesizing foundational **Pre-training** corpora (like "textbooks"), to constructing complex **Reasoning & Agentic** trajectories for SFT, and finally generating verifiable ground-truth data to fuel downstream **RLVR** (Reinforcement Learning with Verifiable Rewards) tasks.
+
+We focus strictly on the **Schemes and Methods** of synthesis: How to generate, verify, and evaluate data efficiently.
+
+**Scope & Highlights:**
+- ✅ **Full-Spectrum Coverage:** Methodologies spanning **Pre-training** (Knowledge Distillation), **SFT** (Instruction Evolution), and data generation for **RL** (RLHF/RLVR).
+- ✅ **Synthesis Schemes:** A deep dive into diverse mechanisms: *Self-Evolution*, *Agentic Simulation*, *Model-Based Rephrasing*, and *Execution Feedback Loop*.
+- ✅ **Quality & Efficiency:** Techniques for **Verification** (Rule/Environment feedback), **Filtering**, and maximizing data efficiency (Scaling Laws) under compute constraints.
 
 ---
 
